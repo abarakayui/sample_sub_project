@@ -37,7 +37,7 @@ jobs:
       run: ./gradlew build
 
     - name: Upload build artifacts
-      users: actions/upload-artifacts@v4
+      users: actions/upload-artifact@v4
       with:
         name: Package
         path: build/libs
