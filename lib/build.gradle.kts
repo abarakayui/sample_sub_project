@@ -14,12 +14,22 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
-    maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/abarakayui/sample_sub_project")
-        credentials {
-            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
-            password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/abarakayui/sample_sub_project")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
         }
     }
 }
