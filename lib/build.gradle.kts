@@ -13,6 +13,14 @@ plugins {
 repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
+    maven {
+      name = "GitHubPackages"
+      url = "https://maven.pkg.github.com/abarakayui/sample_sub_project"
+      credentials {
+        username = System.getenv("GITHUB_ACTOR")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
 }
 
 dependencies {
