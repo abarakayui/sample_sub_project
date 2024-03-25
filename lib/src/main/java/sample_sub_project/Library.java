@@ -5,6 +5,7 @@ package sample_sub_project;
 
 public class Library {
     public boolean someLibraryMethod() {
+        System.out.println("This is a library.");
         return true;
     }
 }
