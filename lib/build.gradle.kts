@@ -14,12 +14,12 @@ repositories {
     // Use Maven Central for resolving dependencies.
     mavenCentral()
     maven {
-      name = "GitHubPackages"
-      url = "https://maven.pkg.github.com/abarakayui/sample_sub_project"
-      credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
-      }
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/abarakayui/sample_sub_project")
+        credentials {
+            username = project.findProperty("gpr.user") as String? ?: System.getenv("GITHUB_ACTOR")
+            password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
+        }
     }
 }
 
